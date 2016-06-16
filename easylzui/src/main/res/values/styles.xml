@@ -7,4 +7,50 @@
         <item name="shadow_bottom">@drawable/library_shadow_bottom</item>
     </style>
 
+    <style name="Theme.Push" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPush</item>
+    </style>
+
+    <style name="Theme.Present" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>
+    </style>
+
+
+    <style name="Theme.No.ActionBar.Push" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPush</item>
+    </style>
+
+    <style name="Theme.No.ActionBar.Present" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>
+    </style>
+
+    <style name="AnimationActivityPush" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/library_slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/library_slide_out_left</item>
+
+        <item name="android:activityCloseEnterAnimation">@anim/library_slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/library_slide_out_right</item>
+    </style>
+
+    <style name="AnimationActivityPresent" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/library_slide_in_from_bottom</item>
+        <item name="android:activityOpenExitAnimation">@anim/library_slide_out_to_top</item>
+
+        <item name="android:activityCloseEnterAnimation">@anim/library_slide_in_from_top</item>
+        <item name="android:activityCloseExitAnimation">@anim/library_slide_out_to_bottom</item>
+    </style>
 </resources>

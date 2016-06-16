@@ -67,7 +67,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "easyui"                                                 // #CONFIG# project name in jcenter
+        name = "easylzui"                                                 // #CONFIG# project name in jcenter
         websiteUrl = POM_SCM_URL
         vcsUrl = POM_GIT_URL
         licenses = ["Apache-2.0"]
