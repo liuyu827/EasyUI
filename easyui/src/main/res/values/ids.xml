@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="id" name="selected_view"/>
-    <item type="id" name="gridview"/>
-    <item type="id" name="webview"/>
-    <item type="id" name="scrollview"/>
-    <item type="id" name="viewpager"/>
-    <item type="id" name="pull_progress"/>
-    <item type="id" name="pull_text"/>
-    <item type="id" name="pull_image"/>
+    <item name="selected_view" type="id" />
+    <item name="gridview" type="id" />
+    <item name="webview" type="id" />
+    <item name="scrollview" type="id" />
+    <item name="viewpager" type="id" />
+    <item name="pull_progress" type="id" />
+    <item name="pull_text" type="id" />
+    <item name="pull_image" type="id" />
 
-    <item type="id" name="tabbar_frament"/>
-    <item type="id" name="tabbar_viewpager"/>
-    <item type="id" name="tabbar_tabwidget"/>
+    <item name="tabbar_frament" type="id" />
+    <item name="tabbar_viewpager" type="id" />
+    <item name="tabbar_tabwidget" type="id" />
 
 
-    <item type="id" name="base_listview"/>
-    <item type="id" name="base_swipe_refresh_widget"/>
-    <item type="id" name="base_fgm_recyclerview"/>
+    <item name="base_listview" type="id" />
+    <item name="base_swipe_refresh_widget" type="id" />
+    <item name="base_fgm_recyclerview" type="id" />
+    <item name="easy_toolbar" type="id" />
 </resources>

@@ -5,32 +5,37 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
+import com.lz.easyui.R;
 import com.lz.easyui.event.BaseEvent;
 import com.lz.easyui.util.RelayoutViewTool;
-import com.lz.easyui.util.SystemBarTintManager;
 import com.lz.easyui.widget.LibraryActionBar;
+import com.lz.easyui.widget.swipebacklayout.SwipeBackActivity;
+import com.lz.easyui.widget.swipebacklayout.SwipeBackLayout;
 
 import java.io.Serializable;
 
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
 /**
  *
  */
-public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> extends SwipeBackActivity implements LibraryActionBar.OnNavigationClickListener {
+public abstract class LibraryBaseActivity<NavigationBar extends LibraryActionBar> extends SwipeBackActivity implements LibraryActionBar.OnNavigationClickListener {
 
     private View baseActView;
 
-    private ActionBar actionBar;
+    private NavigationBar navigationBar;
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +47,23 @@ public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> ex
                 fm.beginTransaction().add(android.R.id.content, getFragment()).commit();
             }
         }
-        actionBar = initActionBar();
-        if (actionBar != null) {
-            actionBar.setOnNavigationListener(this);
+        navigationBar = initActionBar();
+        if (navigationBar != null) {
+            navigationBar.setOnNavigationListener(this);
+        }
+
+        toolbar = (Toolbar) findViewById(R.id.easy_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
         }
     }
 
-    public final ActionBar getBaseActionBar() {
-        return actionBar;
+    public final NavigationBar getNavigationBar() {
+        return navigationBar;
     }
 
     //如果需要navigation 则需要重写此方法
-    public ActionBar initActionBar() {
+    public NavigationBar initActionBar() {
         return null;
     }
 
@@ -62,17 +72,57 @@ public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> ex
         //todo 如果使用navigation 需要重写此方法
     }
 
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
+    public final Toolbar getToolbar() {
+        return toolbar;
+    }
+
+    @TargetApi(21)
+    protected void systemBarFull() {
+        if (Build.VERSION.SDK_INT < 21) {
+            return;
         }
-        win.setAttributes(winParams);
+        Window window = this.getWindow();
+        //设置透明状态栏,这样才能让 ContentView 向上
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        ViewGroup mContentView = (ViewGroup) this.findViewById(Window.ID_ANDROID_CONTENT);
+        View mChildView = mContentView.getChildAt(0);
+        if (mChildView != null) {
+            //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 使其不为系统 View 预留空间.
+            ViewCompat.setFitsSystemWindows(mChildView, false);
+        }
+    }
+
+    @TargetApi(21)
+    protected void systemBarColor(@ColorInt int statusColor) {
+        if (Build.VERSION.SDK_INT < 21) {
+            return;
+        }
+        Window window = this.getWindow();
+        //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        //设置状态栏颜色
+        window.setStatusBarColor(statusColor);
+        ViewGroup mContentView = (ViewGroup) this.findViewById(Window.ID_ANDROID_CONTENT);
+        View mChildView = mContentView.getChildAt(0);
+        if (mChildView != null) {
+            //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 预留出系统 View 的空间.
+            ViewCompat.setFitsSystemWindows(mChildView, true);
+        }
+    }
+
+    public void setContentView(int layoutResID, @ColorInt int systemBarColor) {
+        View view = View.inflate(this, layoutResID, null);
+        if (isRelayout()) {
+            RelayoutViewTool.relayoutViewWithScale(view, getApplicationContext().getResources().getDisplayMetrics().widthPixels);
+        }
+        this.setContentView(view);
+        if (systemBarColor > 0 && Build.VERSION.SDK_INT >= 21) {
+            systemBarColor(systemBarColor);
+        }
     }
 
     @Override
@@ -93,15 +143,11 @@ public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> ex
 
     @Override
     public void setContentView(int layoutResID) {
-        if (getSystemBarColor() > -1) {
-            setContentView(layoutResID, getSystemBarColor());
-        } else {
-            View view = View.inflate(this, layoutResID, null);
-            if (isRelayout()) {
-                RelayoutViewTool.relayoutViewWithScale(view, getApplicationContext().getResources().getDisplayMetrics().widthPixels);
-            }
-            this.setContentView(view);
+        View view = View.inflate(this, layoutResID, null);
+        if (isRelayout()) {
+            RelayoutViewTool.relayoutViewWithScale(view, getApplicationContext().getResources().getDisplayMetrics().widthPixels);
         }
+        this.setContentView(view);
     }
 
     @Override
@@ -112,29 +158,6 @@ public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> ex
 
     public void onEvent(BaseEvent event) {
 
-    }
-
-    public void setContentView(int layoutResID, int systemBarColor) {
-        View view = View.inflate(this, layoutResID, null);
-        if (isRelayout()) {
-            RelayoutViewTool.relayoutViewWithScale(view, getApplicationContext().getResources().getDisplayMetrics().widthPixels);
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            LinearLayout layout = new LinearLayout(getApplicationContext());
-            layout.addView(view);
-            setTranslucentStatus(true);
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            tintManager.setStatusBarTintEnabled(true);
-
-            tintManager.setStatusBarTintResource(systemBarColor);
-            SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-            layout.setPadding(0, config.getPixelInsetTop(true), 0, config.getPixelInsetBottom());
-
-            this.setContentView(layout);
-        } else {
-            this.setContentView(view);
-        }
     }
 
     protected View getBaseActView() {
@@ -160,10 +183,6 @@ public abstract class LibraryBaseActivity<ActionBar extends LibraryActionBar> ex
 
     protected int getEdgeTrackingEnabled() {
         return SwipeBackLayout.EDGE_LEFT;
-    }
-
-    protected int getSystemBarColor() {
-        return -1;
     }
 
     protected abstract void initHeader();// 初始化头部

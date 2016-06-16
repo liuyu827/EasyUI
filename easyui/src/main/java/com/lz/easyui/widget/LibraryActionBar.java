@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
 
+import com.lz.easyui.util.EasyLog;
 import com.lz.easyui.util.RelayoutViewTool;
 
 
@@ -29,7 +30,8 @@ public abstract class LibraryActionBar {
             throw new RuntimeException("[Library] act and layoutID mast have value");
         }
         if (act.getActionBar() == null) {
-            throw new RuntimeException("[Library] can't get ActionBar");
+            EasyLog.d("[Library] can't get ActionBar");
+            return;
         }
         this.act = act;
 
