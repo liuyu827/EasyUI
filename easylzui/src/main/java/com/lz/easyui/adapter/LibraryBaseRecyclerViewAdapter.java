@@ -91,7 +91,7 @@ public abstract class LibraryBaseRecyclerViewAdapter<DataSource, Holder extends 
             };
 
         } else {
-            View view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayoutId(), null);
+            View view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayoutId(), viewGroup, false);
             return onCreateViewHolder(view);
         }
     }

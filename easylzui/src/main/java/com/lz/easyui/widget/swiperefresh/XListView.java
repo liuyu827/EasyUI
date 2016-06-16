@@ -222,7 +222,6 @@ public class XListView extends ListView implements OnScrollListener {
     /**
      * Set last refresh time
      *
-     * @param time
      */
     public void setRefreshTime(String time) {
         mHeader.setRefreshTime(time);
@@ -231,7 +230,6 @@ public class XListView extends ListView implements OnScrollListener {
     /**
      * Set listener.
      *
-     * @param listener
      */
     public void setOnRefreshListener(OnRefreshListener listener) {
         mRefreshListener = listener;
@@ -243,7 +241,6 @@ public class XListView extends ListView implements OnScrollListener {
     /**
      * Set listener.
      *
-     * @param listener
      */
     public void setOnLoadMoreListener(boolean autoLoadEnable, OnLoadMoreListener listener) {
         mEnableAutoLoad = autoLoadEnable;
