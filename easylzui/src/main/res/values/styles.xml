@@ -7,14 +7,14 @@
         <item name="shadow_bottom">@drawable/library_shadow_bottom</item>
     </style>
 
-    <style name="Theme.Push" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Push" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
 
         <item name="android:windowAnimationStyle">@style/AnimationActivityPush</item>
     </style>
 
-    <style name="Theme.Present" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Present" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
 
@@ -22,17 +22,17 @@
     </style>
 
 
-    <style name="Theme.No.ActionBar.Push" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.No.ActionBar.Push" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivityPush</item>
     </style>
 
-    <style name="Theme.No.ActionBar.Present" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.No.ActionBar.Present" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>

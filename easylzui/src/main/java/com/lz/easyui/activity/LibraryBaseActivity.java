@@ -29,11 +29,9 @@ import de.greenrobot.event.EventBus;
 /**
  *
  */
-public abstract class LibraryBaseActivity<NavigationBar extends LibraryActionBar> extends SwipeBackActivity implements LibraryActionBar.OnNavigationClickListener {
+public abstract class LibraryBaseActivity extends SwipeBackActivity {
 
     private View baseActView;
-
-    private NavigationBar navigationBar;
 
     private Toolbar toolbar;
 
@@ -47,29 +45,6 @@ public abstract class LibraryBaseActivity<NavigationBar extends LibraryActionBar
                 fm.beginTransaction().add(android.R.id.content, getFragment()).commit();
             }
         }
-        navigationBar = initActionBar();
-        if (navigationBar != null) {
-            navigationBar.setOnNavigationListener(this);
-        }
-
-        toolbar = (Toolbar) findViewById(R.id.easy_toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
-        }
-    }
-
-    public final NavigationBar getNavigationBar() {
-        return navigationBar;
-    }
-
-    //如果需要navigation 则需要重写此方法
-    public NavigationBar initActionBar() {
-        return null;
-    }
-
-    @Override
-    public void onNavigationItemClick(int itemPosition, int itemId) {
-        //todo 如果使用navigation 需要重写此方法
     }
 
     public final Toolbar getToolbar() {
@@ -134,6 +109,11 @@ public abstract class LibraryBaseActivity<NavigationBar extends LibraryActionBar
         setSwipeBackEnable(edge > -1);
         if (edge > -1) {
             getSwipeBackLayout().setEdgeTrackingEnabled(edge);
+        }
+
+        toolbar = (Toolbar) findViewById(R.id.easy_toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
         }
 
         initHeader();
