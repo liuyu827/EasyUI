@@ -1,16 +1,12 @@
 package com.lz.easyui.util;
 
 
-import com.mrocker.library.Library;
+import com.lz.easyui.EasyUI;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-/**
- * Created by liuyu on 14-7-11.
- */
 
 /**
  * Copyright (c) 2010 CommonsWare, LLC
@@ -116,7 +112,7 @@ public class ParcelUtil {
     }
 
     public static int getIdentifier(String name, String defType) {
-        return Library.resource.getIdentifier(name, defType, Library.pkgName);
+        return EasyUI.resource.getIdentifier(name, defType, EasyUI.pkgName);
     }
 
 
@@ -163,7 +159,7 @@ public class ParcelUtil {
     private static Class getResourceClass(String defType) {
 //        for (Class clazz : arrr.getClasses()) {
         try {
-            for (Class clazz : Class.forName(Library.pkgName + ".R").getClasses()) {
+            for (Class clazz : Class.forName(EasyUI.pkgName + ".R").getClasses()) {
                 if (defType.equals(clazz.getSimpleName())) {
                     return (clazz);
                 }

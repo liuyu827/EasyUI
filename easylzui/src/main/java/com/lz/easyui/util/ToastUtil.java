@@ -2,7 +2,7 @@ package com.lz.easyui.util;
 
 import android.widget.Toast;
 
-import com.mrocker.library.Library;
+import com.lz.easyui.EasyUI;
 
 public class ToastUtil {
 
@@ -22,6 +22,6 @@ public class ToastUtil {
     }
 
     public static void toast(String msg, int time){
-        Toast.makeText(Library.context, msg, time).show();
+        Toast.makeText(EasyUI.ctx, msg, time).show();
     }
 }

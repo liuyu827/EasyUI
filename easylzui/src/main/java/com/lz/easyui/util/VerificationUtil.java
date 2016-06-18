@@ -3,13 +3,6 @@ package com.lz.easyui.util;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created with IntelliJ IDEA.
- * User: liuyu
- * Date: 13-3-21
- * Time: 下午5:08
- * To change this template use File | Settings | File Templates.
- */
 public class VerificationUtil {
     /**
      * 验证用户名称

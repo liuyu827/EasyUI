@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.lz.easyui.R;
 import com.lz.easyui.util.RelayoutViewTool;
-import com.lz.easyui.util.UIDialogUtil;
 
 /**
  * 转轮

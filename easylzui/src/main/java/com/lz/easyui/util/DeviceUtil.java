@@ -7,7 +7,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
-import com.mrocker.library.Library;
+import com.lz.easyui.EasyUI;
 
 import java.lang.reflect.Method;
 
@@ -29,33 +29,33 @@ public class DeviceUtil {
     }
 
     public static String getImei() {
-        TelephonyManager tm = (TelephonyManager) Library.context.getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) EasyUI.ctx.getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getDeviceId();
     }
 
     public static float getDensity() {
-        DisplayMetrics displayMetrics = Library.context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = EasyUI.ctx.getResources().getDisplayMetrics();
         return displayMetrics.density;
     }
 
     public static float getWidth() {
-        DisplayMetrics displayMetrics = Library.context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = EasyUI.ctx.getResources().getDisplayMetrics();
         return displayMetrics.widthPixels;
     }
 
     public static float getHeigh() {
-        DisplayMetrics displayMetrics = Library.context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = EasyUI.ctx.getResources().getDisplayMetrics();
         return displayMetrics.heightPixels;
     }
 
     public static String getResolution() {
-        DisplayMetrics displayMetrics = Library.context.getResources().getDisplayMetrics();
+        DisplayMetrics displayMetrics = EasyUI.ctx.getResources().getDisplayMetrics();
         return displayMetrics.widthPixels + "*" + displayMetrics.heightPixels;
     }
 
     public static int getVersionCode() {
-        PackageManager manager = Library.context.getPackageManager();
-        ApplicationInfo info = Library.context.getApplicationInfo();
+        PackageManager manager = EasyUI.ctx.getPackageManager();
+        ApplicationInfo info = EasyUI.ctx.getApplicationInfo();
 
         try {
             return manager.getPackageInfo(info.packageName, 0).versionCode;
@@ -65,8 +65,8 @@ public class DeviceUtil {
     }
 
     public static String getVersionName() {
-        PackageManager manager = Library.context.getPackageManager();
-        ApplicationInfo info = Library.context.getApplicationInfo();
+        PackageManager manager = EasyUI.ctx.getPackageManager();
+        ApplicationInfo info = EasyUI.ctx.getApplicationInfo();
 
         try {
             return manager.getPackageInfo(info.packageName, 0).versionName;
