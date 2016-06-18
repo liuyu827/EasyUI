@@ -71,8 +71,6 @@ public class XFooterView extends LinearLayout {
      * @see #STATE_LOADING
      * @see #STATE_NORMAL
      * @see #STATE_READY
-     *
-     * @param state
      */
     public void setState(int state) {
         if (state == mState) return;
@@ -117,7 +115,6 @@ public class XFooterView extends LinearLayout {
     /**
      * Set footer view bottom margin.
      *
-     * @param margin
      */
     public void setBottomMargin(int margin) {
         if (margin < 0) return;
@@ -129,7 +126,6 @@ public class XFooterView extends LinearLayout {
     /**
      * Get footer view bottom margin.
      *
-     * @return
      */
     public int getBottomMargin() {
         LayoutParams lp = (LayoutParams) mLayout.getLayoutParams();

@@ -21,8 +21,8 @@ public class RelayoutViewTool {
     /**
      * 将原视图 宽高，padding，margin 按比例重新布局；
      *
-     * @param view
-     * @param scale
+     * @param view view
+     * @param scale 屏幕密度
      */
     public static void relayoutViewWithScale(View view, float scale) {
 
@@ -76,7 +76,7 @@ public class RelayoutViewTool {
     
 	/**
 	 * 将视图布局属性按比例设置；
-	 * @param params		
+	 * @param params params
 	 * @param scale	缩放比例；
 	 */
     private static void scaleLayoutParams(LayoutParams params, float scale){

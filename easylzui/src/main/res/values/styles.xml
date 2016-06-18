@@ -21,7 +21,6 @@
         <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>
     </style>
 
-
     <style name="Theme.No.ActionBar.Push" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -34,6 +33,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>
+    </style>
+
+    <style name="Theme.No.ActionBar.NoTranslucent.Push" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivityPush</item>
+    </style>
+
+    <style name="Theme.No.ActionBar.NoTranslucent.Present" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@style/AnimationActivityPresent</item>
     </style>
