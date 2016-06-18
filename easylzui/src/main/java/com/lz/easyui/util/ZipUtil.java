@@ -12,10 +12,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-
-/**
- * @author Nick create at 2011-3-9
- */
 public class ZipUtil {
 
 	public static byte[] deflate(byte[] content) {

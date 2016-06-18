@@ -97,12 +97,4 @@ public class Base64Utils {
         }
         return sb.toString().getBytes("iso8859-1");
     }
-    public static void main(String[] args) throws UnsupportedEncodingException {
-        String s = "abcd";
-        System.out.println("加密前：" + s);
-        String x = encode(s.getBytes());
-        System.out.println("加密后：" + x);
-        String x1 = new String(decode(x));
-        System.out.println("解密后：" + x1);
-    }
 }

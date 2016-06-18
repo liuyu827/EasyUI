@@ -79,6 +79,7 @@ bintray {
 afterEvaluate { project ->
     task releaseEasyUI {
         dependsOn clean
+        clean.finalizedBy sourcesJar
         clean.finalizedBy javadocJar
         javadocJar.finalizedBy sourcesJar
         sourcesJar.finalizedBy install

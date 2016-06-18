@@ -10,12 +10,6 @@ import android.net.Uri;
 import java.util.List;
 import java.util.regex.Pattern;
 
-/**
- * Created by IntelliJ IDEA.
- * User: daocren
- * Date: 11-5-18
- * Time: 上午11:26
- */
 public class TelephonyUtil {
 
     private static final String TAG = TelephonyUtil.class.getSimpleName();

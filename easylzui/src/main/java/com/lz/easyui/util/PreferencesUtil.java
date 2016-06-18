@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 
 public class PreferencesUtil {
 
-    private final String TAG = "PreferencesUtil";
+    private final static String TAG = "PreferencesUtil";
 
     public static <T> void putPreferences(String key, T value) {
         SharedPreferences.Editor editor = EasyUI.preferences.edit();

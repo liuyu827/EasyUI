@@ -9,30 +9,12 @@ import android.provider.MediaStore;
 import java.io.File;
 import java.net.URLEncoder;
 
-/**
- * Created with IntelliJ IDEA.
- * User: SlothMonkey
- * Date: 12-12-10
- * Time: 下午2:05
- * 用来创建各种需要的Intent对象
- */
 public class IntentUtil {
 
-    /**
-     * 调用系统短信界面，指定号码
-     *
-     * @param number 手机号
-     */
     public static Intent getSmsIntent(String number) {
         return new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + number));
     }
 
-    /**
-     * 调用系统短信编辑界面，指定号码和短信内容
-     *
-     * @param number 手机号
-     * @param body   短信内容
-     */
     public static Intent getSmsIntent(String number, String body) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("smsto:" + number));
@@ -40,12 +22,6 @@ public class IntentUtil {
         return intent;
     }
 
-    /**
-     * 调用系统打电话界面，指定号码
-     *
-     * @param number 手机号
-     * @return intent
-     */
     public static Intent getCallIntent(String number) {
         Intent intent = new Intent();
         //系统默认的action，用来打开默认的电话界面
@@ -55,12 +31,6 @@ public class IntentUtil {
         return intent;
     }
 
-    /**
-     * 创建调用其他APK应用的Intent对象
-     * @param packagePath APK的包路径
-     * @param startActivity APK的启动Activity
-     * @return Intent
-     */
     public static Intent getOtherApkStartIntent(String packagePath, String startActivity) {
         Intent mIntent = new Intent();
         ComponentName comp = new ComponentName(packagePath, startActivity);
@@ -69,32 +39,18 @@ public class IntentUtil {
         return mIntent;
     }
 
-    /**
-     * 创建调用系统摄像应用对应的Intent
-     * @return intent
-     */
     public static Intent makeTakePicturesIntent(File file){
         Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(file));
         return intent;
     }
 
-
-
-    /**
-     * 创建调用系统图库应用对应的Intent
-     * @return intent
-     */
     public static Intent makeSystemAlbumIntent(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         return intent;
     }
 
-    /**
-     * 创建调用系统图库应用对应的Intent
-     * @return intent
-     */
     public static Intent getSelectPhoto() {
         Intent intent = new Intent();
         /* 开启Pictures画面Type设定为image */
@@ -109,10 +65,6 @@ public class IntentUtil {
         return wrapperIntent;
     }
 
-    /**
-     * 创建调用系统图片裁剪
-     * @return intent
-     */
     public static Intent startPhotoZoomIntent(Uri uri, Uri toUri, int size){
 //        Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
         Intent intent = new Intent("com.android.camera.action.CROP");
@@ -150,10 +102,6 @@ public class IntentUtil {
         return intent;
     }
 
-    /**
-     * 创建调用系统图片裁剪，传递Bitmap用于解决G5缓存图片问题
-     * @return intent
-     */
     public static Intent startPhotoZoomIntent(Bitmap bitmap){
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setType("image/*");
@@ -172,11 +120,6 @@ public class IntentUtil {
         return intent;
     }
 
-    /**
-     * 启动新浪微博的发送界面，前提是已经安装新浪微博
-     *
-     * @return
-     */
     public static Intent startSinaWeiboSendIntent(String content){
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);

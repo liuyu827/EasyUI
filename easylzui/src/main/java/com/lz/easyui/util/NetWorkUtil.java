@@ -11,13 +11,6 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-/**
- * Created with IntelliJ IDEA.
- * User: junhai
- * Date: 13-1-18
- * Time: 下午12:03
- * To change this template use File | Settings | File Templates.
- */
 public class NetWorkUtil {
 
     public static boolean networkCanUse(Context context) {
@@ -60,17 +53,11 @@ public class NetWorkUtil {
                 }
             }
         } catch (SocketException ex) {
-            Log.e("WifiPreference IpAddress", ex.toString());
+            EasyLog.e("WifiPreference IpAddress", ex.toString());
         }
         return null;
     }
 
-    /**
-     * 判断网络类型 wifi  3G
-     *
-     * @param context
-     * @return
-     */
     public static boolean isWifiNetwrokType(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = connectivityManager.getActiveNetworkInfo();

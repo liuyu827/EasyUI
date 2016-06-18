@@ -1,13 +1,5 @@
 package com.lz.easyui.util;
 
-/**
- * Created with IntelliJ IDEA.
- * User: junhai
- * Date: 13-1-18
- * Time: 下午12:41
- * To change this template use File | Settings | File Templates.
- */
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

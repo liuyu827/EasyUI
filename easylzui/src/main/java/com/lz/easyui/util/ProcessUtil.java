@@ -3,9 +3,6 @@ package com.lz.easyui.util;
 import android.app.ActivityManager;
 import android.content.Context;
 
-/**
- *
- */
 public class ProcessUtil {
 
 

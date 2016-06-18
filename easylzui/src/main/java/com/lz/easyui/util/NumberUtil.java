@@ -9,13 +9,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-/**
- * Created with IntelliJ IDEA.
- * User: SlothMonkey
- * Date: 12-4-28
- * Time: 下午2:39
- * To change this template use File | Settings | File Templates.
- */
 public class NumberUtil {
 
     private static final String TAG = NumberUtil.class.getSimpleName();
@@ -24,42 +17,34 @@ public class NumberUtil {
         return BigDecimal.valueOf(money, 2);
     }
 
-
-    //有两位小数的钱转换为以分为单位的钱
     public static Long decimal2Long(BigDecimal money) {
         return (money.multiply(BigDecimal.valueOf(100))).longValue();
     }
 
-    //将分转换成元的字符串
     public static String getMoneyYuanStr(long moneyFen) {
         return long2Decimal(moneyFen).toString();
     }
 
-    // Folat保留n位小数，四舍五入，返回Folat类型对象
     public static Float getFloatFromFloatRoundHalfUp(float sourceNum, int scale) {
         BigDecimal bigDecimal = new BigDecimal(sourceNum);
         return bigDecimal.setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    // Double保留n位小数，四舍五入，返回Folat类型对象
     public static Float getDoubleFromDoubletRoundHalfUp(double sourceNum, int scale) {
         BigDecimal bigDecimal = new BigDecimal(sourceNum);
         return bigDecimal.setScale(scale, BigDecimal.ROUND_HALF_UP).floatValue();
     }
 
-    // Double保留n位小数，四舍五入，返回double类型对象
     public static Double getDoubleFromDoubletRoundHalfUp1(double sourceNum, int scale) {
         BigDecimal bigDecimal = new BigDecimal(sourceNum);
         return bigDecimal.setScale(scale, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
-    //float 转换至 int 小数四舍五入
     public static int convertFloatToInt(float sourceNum) {
         BigDecimal bigDecimal = new BigDecimal(sourceNum);
         return bigDecimal.setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
     }
 
-    //double 转换至 int 小数四舍五入
     public static int convertDoubleToInt(double sourceNum) {
         BigDecimal bigDecimal = new BigDecimal(sourceNum);
         return bigDecimal.setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
@@ -116,20 +101,11 @@ public class NumberUtil {
         return numStr;
     }
 
-    /**
-     *  @param startNum //获取随机 数开始数字
-     *  @param endNum   //获取随机 数结束数字
-     * */
     public static int getRandom(int startNum, int endNum) {
         int num = (int) (Math.round(Math.random() * (endNum - startNum) + startNum));
         return num;
     }
 
-    /**
-     *  @param startNum //获取随机 数开始数字
-     *  @param endNum   //获取随机 数结束数字
-     *  @param needNum      //获取随机个数
-     * */
     public static int[] getRandom(int startNum, int endNum, int needNum) {
         int nums[] = new int[needNum];
         Set<Integer> integerSet = new HashSet<Integer>();
@@ -144,14 +120,6 @@ public class NumberUtil {
         return nums;
     }
 
-
-
-    /**
-     * @param int size 需要的随机数 数量
-     * @param int beginNum 随机 范围的开始
-     * @param int endNum 随机 范围的结束
-     * @return int[]
-     */
     public static int[] getMachineSelectionNum(int size, int numbers[]) {
         int length = numbers.length;
         int num[] = new int[size];
@@ -176,12 +144,6 @@ public class NumberUtil {
         return num;
     }
 
-    /**
-     * @param int size 需要的随机数 数量
-     * @param int beginNum 随机 范围的开始
-     * @param int endNum 随机 范围的结束
-     * @return int[]
-     */
     public static int[] getMachineSelectionNumNo(int size, int numbers[]) {
         int length = numbers.length;
         int num[] = new int[size];
@@ -218,9 +180,6 @@ public class NumberUtil {
         return numbers;
     }
 
-    /**
-     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
-     */
     public static int dip2px(float dpValue) {
         final float scale = DeviceUtil.getDensity();
         return (int) (dpValue * scale + 0.5f);

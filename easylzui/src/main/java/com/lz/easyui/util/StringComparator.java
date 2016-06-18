@@ -5,11 +5,6 @@ import java.text.Collator;
 import java.util.Comparator;
 import java.util.Locale;
 
-/**
- * Created by IntelliJ IDEA.
- * User: daocren
- * Date: 12-1-9   17:57
- */
 public class StringComparator implements Comparator<String> {
     Collator collator = Collator.getInstance();
 

@@ -18,7 +18,6 @@ import com.lz.easyui.R;
 import com.lz.easyui.event.BaseEvent;
 import com.lz.easyui.util.RelayoutViewTool;
 import com.lz.easyui.util.StatusBarTool;
-import com.lz.easyui.widget.LibraryActionBar;
 import com.lz.easyui.widget.swipebacklayout.SwipeBackActivity;
 import com.lz.easyui.widget.swipebacklayout.SwipeBackLayout;
 

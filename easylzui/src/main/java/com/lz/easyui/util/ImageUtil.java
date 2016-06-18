@@ -37,21 +37,17 @@ public class ImageUtil {
         try {
             bitmap = android.media.ThumbnailUtils.createVideoThumbnail(filePath, MediaStore.Video.Thumbnails.FULL_SCREEN_KIND);
         } catch (IllegalArgumentException ex) {
-// Assume this is a corrupt video file
         } catch (RuntimeException ex) {
-// Assume this is a corrupt video file.
         } finally {
             try {
                 retriever.release();
             } catch (RuntimeException ex) {
-// Ignore failures while cleaning up.
             }
         }
 
         return bitmap;
     }
 
-    //图片先缩放尺寸，再居中裁剪
     public static Bitmap scaleAndCutThumbnail(String filename, int resizeWidth, int resizeHeight) {
         Bitmap bitmap = null;
         Bitmap resBitmap = null;
@@ -109,7 +105,6 @@ public class ImageUtil {
         return bmp;
     }
 
-    //裁剪或者缩放宽高到统一尺寸
     public static Bitmap cutImage(Bitmap bitmap, int resizeWidth, int resizeHeight) {
         if (bitmap == null)
             return null;
@@ -282,11 +277,6 @@ public class ImageUtil {
     }
 
 
-    /**
-     * 获取bitmap尺寸缩放解决OOM问题
-     *
-     * @throws java.io.IOException
-     */
     public static Bitmap convertBitmap(String file, float maxSize) {
         Bitmap bitmap = null;
         try {
@@ -320,12 +310,6 @@ public class ImageUtil {
         return bitmap;
     }
 
-    /**
-     * 转换图片成圆形
-     *
-     * @param bitmap 传入Bitmap对象
-     * @return
-     */
     public static Bitmap toRoundBitmap(Bitmap bitmap) {
         if (bitmap == null)
             return null;
@@ -375,7 +359,6 @@ public class ImageUtil {
     }
 
 
-    //生成圆角图片
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, final float roundPx) {
         if (bitmap == null)
             return null;
@@ -398,9 +381,6 @@ public class ImageUtil {
         }
     }
 
-    /**
-     * Drawable 转为 Bitmap
-     * */
     public static Bitmap getBitMap(Drawable drawable){
         // 取 drawable 的长宽
         int w = drawable.getIntrinsicWidth();

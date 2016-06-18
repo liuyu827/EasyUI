@@ -10,13 +10,6 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
 
-/**
- * Created by IntelliJ IDEA.
- * User: yangjunhai
- * Date: 11-6-21
- * Time: 下午2:58
- * copy from apache-io
- */
 public class IOUtils {
     
     public static void closeQuietly(Closeable closeable) {
@@ -89,6 +82,4 @@ public class IOUtils {
         }
         return count;
     }
-
-
 }

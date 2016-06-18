@@ -8,19 +8,6 @@ import java.lang.reflect.Field;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Copyright (c) 2010 CommonsWare, LLC
- * <p/>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License. You may obtain
- * a copy of the License at
- * http://www.apache.org/licenses/LICENSE-2.0
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 public class ParcelUtil {
     private static final int CACHE_SIZE = 101;
     private String id = null;
@@ -114,47 +101,6 @@ public class ParcelUtil {
     public static int getIdentifier(String name, String defType) {
         return EasyUI.resource.getIdentifier(name, defType, EasyUI.pkgName);
     }
-
-
-//    public int getIdentifier(String name, String defType, boolean mungeName) {
-//        int result = -1;
-//        StringBuilder cacheKey = new StringBuilder(name);
-//
-//        cacheKey.append('|');
-//        cacheKey.append(defType);
-//
-//        Integer cacheHit = cache.get(cacheKey.toString());
-//
-//        if (cacheHit != null) {
-//            return (cacheHit.intValue());
-//        }
-//
-//        if (!name.startsWith(id) && mungeName) {
-//            StringBuilder buf = new StringBuilder(id);
-//
-//            buf.append('_');
-//            buf.append(name);
-//
-//            name = buf.toString();
-//        }
-//
-//        try {
-//            Class clazz = getResourceClass(defType);
-//
-//            if (clazz != null) {
-//                Field fld = clazz.getDeclaredField(name);
-//
-//                if (fld != null) {
-//                    result = fld.getInt(clazz);
-//                    cache.put(cacheKey.toString(), result);
-//                }
-//            }
-//        } catch (Throwable t) {
-//            throw new RuntimeException("Exception finding resource identifier", t);
-//        }
-//
-//        return (result);
-//    }
 
     private static Class getResourceClass(String defType) {
 //        for (Class clazz : arrr.getClasses()) {

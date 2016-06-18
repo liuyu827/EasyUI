@@ -17,13 +17,15 @@ public class EasyUI {
 
     public static DisplayMetrics displayMetrics;
 
-    public static float screenWidthScale = 1f;
+    public static int screenWidthScale;
 
-    public static float screenHeightScale = 1f;
+    public static int screenHeightScale;
 
     public static Resources resource;
 
     public static String pkgName;
+
+    public static String app_identity;
 
     public static void init(Context context) {
         ctx = context;

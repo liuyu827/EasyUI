@@ -11,9 +11,6 @@ import com.lz.easyui.EasyUI;
 
 import java.lang.reflect.Method;
 
-/**
-* @author Nick create at 2011-3-18
-*/
 public class DeviceUtil {
 
     public static String getProp(String prop) {

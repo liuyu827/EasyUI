@@ -7,8 +7,10 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.lz.easyui.R;
+import com.lz.easyui.EasyUI;
 import com.lz.easyui.util.RelayoutViewTool;
+import com.lz.easyui.util.UIDialogUtil;
+import com.lz.easyui.R;
 
 /**
  * 转轮
@@ -38,7 +40,7 @@ public class LibraryProgressBar {
      * @param canFinish 是否可关闭当前Activity
      */
     public synchronized void startProgressBar(final Activity act, String message, final boolean canCancel, final boolean canFinish) {
-        startProgressBar(act, message, canCancel, canFinish, true);
+        startProgressBar(act, message, canCancel, canFinish, false);
     }
 
     /**
@@ -55,7 +57,7 @@ public class LibraryProgressBar {
 
         View view = View.inflate(act, R.layout.library_common_dialog_progressbar, null);
         if (relayout) {
-            RelayoutViewTool.relayoutViewWithScale(view, act.getApplicationContext().getResources().getDisplayMetrics().widthPixels);
+            RelayoutViewTool.relayoutViewWithScale(view, EasyUI.screenWidthScale);
         }
         progressBarDialog = UIDialogUtil.getInstance().buildDialog(act, view, false);
         TextView titleTest = (TextView) view.findViewById(R.id.library_common_dialog_loading_txt);

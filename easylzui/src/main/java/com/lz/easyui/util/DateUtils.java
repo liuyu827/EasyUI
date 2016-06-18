@@ -5,9 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by IntelliJ IDEA. User: liuyu Date: 14-4-27 Time: 下午5:27
- */
 public class DateUtils {
 
     public static final DateFormat FORMATOR_YMDHMS_1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -24,35 +21,14 @@ public class DateUtils {
     public static final DateFormat FORMATOR_MD = new SimpleDateFormat("MM月dd日");
 
 
-    /**
-     * 根据 时间样式 格式获取日期字符串
-     *
-     * @param date       时间Date
-     * @param dateFormat 时间格式
-     * @return String
-     */
     public static String getDateStr(Date date, DateFormat dateFormat) {
         return dateFormat.format(date);
     }
 
-    /**
-     * 根据 时间样式 格式获取日期字符串
-     *
-     * @param time       时间long 单位是毫秒
-     * @param dateFormat 时间格式
-     * @return String
-     */
     public static String getDateStr(long time, DateFormat dateFormat) {
         return dateFormat.format(new Date(time));
     }
 
-    /**
-     * 根据字符串和时间样式 生成日期
-     *
-     * @param dateStr    时间字符串
-     * @param dateFormat 时间格式
-     * @return Date
-     */
     public static Date getDate(String dateStr, DateFormat dateFormat) {
         try {
             return dateFormat.parse(dateStr);
@@ -61,13 +37,6 @@ public class DateUtils {
         }
     }
 
-    /**
-     * 根据字符串和时间样式 生成日期long
-     *
-     * @param dateStr    时间字符串
-     * @param dateFormat 时间格式
-     * @return long
-     */
     public static long getDateLong(String dateStr, DateFormat dateFormat) {
         Date date;
         try {
@@ -78,14 +47,6 @@ public class DateUtils {
         return date.getTime();
     }
 
-    /**
-     * 转换字符串格式
-     *
-     * @param dateStr        时间字符串
-     * @param dateFormatFrom 当前时间样式
-     * @param dateFormatTo   要转换的样式
-     * @return String
-     */
     public static String getDateTransformation(String dateStr, DateFormat dateFormatFrom, DateFormat dateFormatTo) {
         try {
             Date date = dateFormatFrom.parse(dateStr);
@@ -95,24 +56,11 @@ public class DateUtils {
         }
     }
 
-
-    /**
-     * 根据long转为Date
-     *
-     * @param source 时间long 单位是毫秒
-     * @return Date
-     */
     public static Date getDateFromLong(long source) {
         Date date = new Date(source);
         return date;
     }
 
-    /**
-     * 根据long获取星期
-     *
-     * @param time 时间long 单位是毫秒
-     * @return String
-     */
     public static String getChineseDate(long time) {
         Date date = getDateFromLong(time);
         String d = "";
@@ -143,12 +91,6 @@ public class DateUtils {
         return d;
     }
 
-    /**
-     * 根据long获取星期
-     *
-     * @param time 时间long 单位是毫秒
-     * @return String
-     */
     public static String getChineseDate2(long time) {
         Date date = getDateFromLong(time);
         String d = "";

@@ -11,19 +11,8 @@ import android.widget.TextView;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
-/**
- * 重新布局工具类
- *
- * @author {YueJinbiao}
- */
 public class RelayoutViewTool {
 
-    /**
-     * 将原视图 宽高，padding，margin 按比例重新布局；
-     *
-     * @param view view
-     * @param scale 屏幕密度
-     */
     public static void relayoutViewWithScale(View view, float scale) {
 
         if (view == null) {
@@ -52,11 +41,7 @@ public class RelayoutViewTool {
             }
         }
     }
-	/**
-	 * 将视图按比例缩放，不考虑嵌套视图；
-	 * @param view		不考虑嵌套，缩放单个View；
-	 * @param scale	缩放比例；
-	 */
+
     private static void resetViewLayoutParams(View view, float scale) {
 		
 		if(view instanceof TextView){
@@ -74,11 +59,6 @@ public class RelayoutViewTool {
 		
 	}
     
-	/**
-	 * 将视图布局属性按比例设置；
-	 * @param params params
-	 * @param scale	缩放比例；
-	 */
     private static void scaleLayoutParams(LayoutParams params, float scale){
 		if (params == null) {
 			return;

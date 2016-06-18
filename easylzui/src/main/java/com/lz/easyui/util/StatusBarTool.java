@@ -13,9 +13,6 @@ import android.view.WindowManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/**
- *
- */
 public class StatusBarTool {
 
     @TargetApi(21)
@@ -24,9 +21,7 @@ public class StatusBarTool {
             return;
         }
         Window window = activity.getWindow();
-        //设置透明状态栏,这样才能让 ContentView 向上
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
         View mChildView = mContentView.getChildAt(0);
@@ -42,11 +37,8 @@ public class StatusBarTool {
             return;
         }
         Window window = activity.getWindow();
-        //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        //设置状态栏颜色
         window.setStatusBarColor(statusColor);
         ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
         View mChildView = mContentView.getChildAt(0);
@@ -56,12 +48,6 @@ public class StatusBarTool {
         }
     }
 
-    /**
-     * 设置状态栏黑色字体图标，
-     * 适配4.4以上版本MIUIV、Flyme和6.0以上版本其他Android
-     *
-     * @param activity 当前act
-     */
     public static void statusBarLightMode(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -71,9 +57,6 @@ public class StatusBarTool {
         }
     }
 
-    /**
-     * 清除MIUI或flyme或6.0以上版本状态栏黑色字体
-     */
     public static void statusBarDarkMode(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
@@ -83,14 +66,6 @@ public class StatusBarTool {
         }
     }
 
-    /**
-     * 设置状态栏图标为深色和魅族特定的文字风格
-     * 可以用来判断是否为Flyme用户
-     *
-     * @param window 需要设置的窗口
-     * @param dark   是否把状态栏字体及图标颜色设置为深色
-     * @return boolean 成功执行返回true
-     */
     public static boolean FlymeSetStatusBarLightMode(Window window, boolean dark) {
         boolean result = false;
         if (window != null) {
@@ -117,13 +92,6 @@ public class StatusBarTool {
         return result;
     }
 
-    /**
-     * 设置状态栏字体图标为深色，需要MIUIV6以上
-     *
-     * @param window 需要设置的窗口
-     * @param dark   是否把状态栏字体及图标颜色设置为深色
-     * @return boolean 成功执行返回true
-     */
     public static boolean MIUISetStatusBarLightMode(Window window, boolean dark) {
         boolean result = false;
         if (window != null) {
